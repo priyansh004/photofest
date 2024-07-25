@@ -5,9 +5,9 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store'; // Adjust import path
 
 const PrivateRoute: React.FC = () => {
-    const isAuthenticated = useSelector((state: RootState) => state.user.isAuthenticated);
+    const {currentUser} = useSelector((state: RootState) => state.user);
 
-    if (!isAuthenticated) {
+    if (!currentUser) {
         return <Navigate to="/login" />;
     }
 

@@ -9,7 +9,7 @@ const Register: React.FC = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [displayName, setDisplayName] = useState('');
+  const [username, setUsername] = useState('');
   const [error, setError] = useState('');
 
   const handleRegister = async (e: React.FormEvent) => {
@@ -17,7 +17,7 @@ const Register: React.FC = () => {
     try {
         const response = await axios.post(
             `${import.meta.env.VITE_API_BACKEND_URL}/api/auth/register`, 
-            { email, password }, // Assuming you have a username in the registration form
+            { email, password,username }, // Assuming you have a username in the registration form
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -62,9 +62,9 @@ const Register: React.FC = () => {
       <form onSubmit={handleRegister}>
         <input
           type="text"
-          value={displayName}
-          onChange={(e) => setDisplayName(e.target.value)}
-          placeholder="Display Name"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="UserName"
           required
         />
         <input
